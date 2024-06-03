@@ -1,0 +1,97 @@
+<!-- include the code in "base.html" in the page  -->
+{% extends 'webapp/base.html' %}
+<!-- start the content of the page  -->
+{% block content %}
+<body>
+    <h4>Welcome <span><i class="fa fa-user-circle" aria-hidden="true"></i> {{user.username}} </span> to the dashboard. 👋</h4>
+    <br>
+    <a class="btn btn-outline-primary btn-lg" href="{% url 'create-record'%}">
+        Create a new client record  <i class="fa fa-plus" aria-hidden="true"></i>
+    </a>
+    <br>
+    <br>
+    <h3 class="text-center"><i class="fa fa-table" aria-hidden="true"></i> Client Records</h3>
+    <table class="table table-hover table-border">
+        <thead class="table-light">
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col"><i class="fa fa-user" aria-hidden="true"></i> Full Name</th>
+                <th scope="col"><i class="fa fa-envelope" aria-hidden="true"></i> Email</th>
+                <th scope="col"><i class="fa fa-phone-square" aria-hidden="true"></i> Phone</th>
+                <th scope="col"><i class="fa fa-map-marker" aria-hidden="true"></i> Address</th>
+                <th scope="col"><i class="fa fa-globe" aria-hidden="true"></i> City</th>
+                <th scope="col"> Province</th>
+                <th scope="col"><i class="fa fa-globe" aria-hidden="true"></i> Country</th>
+                <th scope="col"><i class="fa fa-clock-o" aria-hidden="true"></i> Date Joined</th>
+                <th scope="col"></i>View</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% if records %}
+        {% for record in records %}
+            <tr>
+                <td>{{record.id}}</td>
+                <td>{{record.first_name}} {{record.last_name}}</td>
+                <td>{{record.email}}</td>
+                <td>{{record.phone}}</td>
+                <td>{{record.address}}</td>
+                <td>{{record.city}}</td>
+                <td>{{record.province}}</td>
+                <td>{{record.country}}</td>
+                <td>{{record.creation_date}}</td>
+                <td><a class="btn btn-primary btn-sm" href="{% url 'view-record' record.id %}"><i class="fa fa-eye" aria-hidden="true"></i></a></td>
+            </tr>
+        {% endfor %}
+        {% endif %}
+        </tbody>
+    </table>
+
+
+    <br>
+
+    <hr>
+ 
+    
+    <a class="btn btn-outline-primary btn-lg" href="{% url 'create-project' %}">
+        Start a new project <i class="fa fa-plus" aria-hidden="true"></i>
+    </a>
+    <br>
+    <br>
+    <h3 class="text-center"><i class="fa fa-table" aria-hidden="true"></i> Projects</h3>
+    <table class="table table-hover table-border ">
+        <thead class="table-light">
+            <tr>
+                <th scope="col1">ID</th>
+                <th scope="col"><i class="fa fa-tasks" aria-hidden="true"></i> Project</th>
+                <th scope="col"><i class="fa fa-commenting-o" aria-hidden="true"></i> Discription</th>
+                <th scope="col"><i class="fa fa-usd" aria-hidden="true"></i> Cost</th>
+                <th scope="col"><i class="fa fa-clock-o" aria-hidden="true"></i> Start Date</th>
+                <th scope="col"><i class="fa fa-clock-o" aria-hidden="true"></i> Deadline</th>
+                <th scope="col"><i class="fa fa-briefcase" aria-hidden="true"></i> Project Manager</th>
+                <th scope="col"><i class="fa fa-envelope" aria-hidden="true"></i> PM Email</th>
+                <th scope="col"></i>View</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% if projects %}
+        {% for project in projects %}
+            <tr>
+                <td>{{project.id}}</td>
+                <td>{{project.project}}</td>
+                <td>{{project.project_discription}}</td>
+                <td>{{project.project_cost}}</td>
+                <td>{{project.project_start_date}}</td>
+                <td>{{project.project_deadLine}}</td>
+                <td>{{project.employee_name}}</td>
+                <td>{{project.employee_email}}</td>
+                <td><a class="btn btn-primary btn-sm" href="{% url 'view-project' project.id %}"><i class="fa fa-eye" aria-hidden="true"></i> </a></td>
+            {% endfor %}
+            {% endif %}
+            </tr>
+        </tbody>
+    </table>
+<!-- "record" refer to the model created in models.py -->
+<!-- records refer to the context we create in views.py  -->
+<!-- end the content of the page  -->
+</body>
+{% endblock %}

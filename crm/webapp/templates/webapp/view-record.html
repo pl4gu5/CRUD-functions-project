@@ -1,0 +1,33 @@
+{% extends 'webapp/base.html' %}
+{% block content %}
+<body>
+    <div class="card">
+
+        <div class="card-body">
+            <ul class="list-group list-group-flush">
+                <strong>
+                    <i class="fa fa-user-circle-o" aria-hidden="true"></i>
+                    {{record.first_name}}
+                    {{record.last_name}}
+                </strong>
+                <hr>
+                <li class="list-group-item">ID: {{record.id}}</p>
+                <li class="list-group-item"><i class="fa fa-user" aria-hidden="true"></i> Name: {{record.first_name}} {{record.last_name}}</li>
+                <li class="list-group-item"><i class="fa fa-envelope" aria-hidden="true"></i> Email: {{record.email}}</li>
+                <li class="list-group-item"><i class="fa fa-phone-square" aria-hidden="true"></i> Phone Number: {{record.phone}}</li>
+                <li class="list-group-item"><i class="fa fa-map-marker" aria-hidden="true"></i> Address: {{record.address}}</li>
+                <li class="list-group-item"><i class="fa fa-globe" aria-hidden="true"></i> City: {{record.city}}</li>
+                <li class="list-group-item"><i class="fa fa-globe" aria-hidden="true"></i> Province: {{record.province}}</li>
+                <li class="list-group-item"><i class="fa fa-globe" aria-hidden="true"></i> Country: {{record.country}}</li>
+                <li class="list-group-item"><i class="fa fa-clock-o" aria-hidden="true"></i> Date Joined: {{record.creation_date}}</li>
+            </ul>
+        </div>
+    </div>
+    <a href="{% url 'dashboard'%}" class="btn btn-secondary">Return &nbsp; <i class="fa fa-arrow-left" aria-hidden="true"></i></a>
+    &nbsp;
+    <a href="{% url 'update-record' record.id %}" class="btn btn-primary">Update Record &nbsp; <i class="fa fa-check" aria-hidden="true"></i></a>
+    &nbsp;
+    <a href="{% url 'delete-record' record.id %}" class="btn btn-danger">Delete Record &nbsp; <i class="fa fa-trash" aria-hidden="true"></i>
+    </a>
+</body>
+{% endblock %}

@@ -1,0 +1,30 @@
+{% extends 'webapp/base.html' %}
+{% block content %}
+<body>
+    <div class="card">
+
+        <div class="card-body">
+            <ul class="list-group list-group-flush">
+                <strong>
+                    <i class="fa fa-tasks" aria-hidden="true"></i>
+                    {{project.project}}
+                </strong>
+                <hr>
+                <li class="list-group-item">ID: {{project.id}}</li>
+                <li class="list-group-item"><i class="fa fa-tasks" aria-hidden="true"></i> Project Name: {{project.project}}</li>
+                <li class="list-group-item"><i class="fa fa-commenting-o" aria-hidden="true"></i> Project Discription: {{project.project_discription}}</li>
+                <li class="list-group-item"><i class="fa fa-usd" aria-hidden="true"></i> Project Cost: {{project.project_cost}}</li>
+                <li class="list-group-item"><i class="fa fa-clock-o" aria-hidden="true"></i> Project Start Date: {{project.project_start_date}}</li>
+                <li class="list-group-item"><i class="fa fa-clock-o" aria-hidden="true"></i> Project Deadline: {{project.project_deadLine}}</li>
+                <li class="list-group-item"><i class="fa fa-briefcase" aria-hidden="true"></i> Project Manager: {{project.employee_name}}</li>
+                <li class="list-group-item"><i class="fa fa-briefcase" aria-hidden="true"></i> PM Email: {{project.employee_email}}</li>
+            </ul>
+        </div>
+    </div>
+    <a href="{% url 'dashboard'%}" class="btn btn-secondary">Return &nbsp; <i class="fa fa-arrow-left" aria-hidden="true"></i></a>
+    &nbsp;
+    <a href="{% url 'update-project' project.id %}" class="btn btn-primary">Update Project &nbsp; <i class="fa fa-check" aria-hidden="true"></i></a>
+    &nbsp;
+    <a href="{% url 'delete-project' project.id %}" class="btn btn-danger">Delete Project &nbsp; <i class="fa fa-trash" aria-hidden="true"></i></a>
+</body>
+{% endblock %}
